@@ -24,25 +24,6 @@ async function getWeather(city) {
     document.querySelector(".humidity").innerText = data.main.humidity + "%";
     document.querySelector(".wind").innerText = data.wind.speed + " km/h";
 
-    // if (data.weather[0].main === "Clouds") {
-    //   weatherIcon.src = "assets/clouds.png";
-    // }
-    // if (data.weather[0].main === "Rain") {
-    //   weatherIcon.src = "assets/rain.png";
-    // }
-    // if (data.weather[0].main === "Clear") {
-    //   weatherIcon.src = "assets/clear.png";
-    // }
-    // if (data.weather[0].main === "Drizzle") {
-    //   weatherIcon.src = "assets/drizzle.png";
-    // }
-    // if (data.weather[0].main === "Mist") {
-    //   weatherIcon.src = "assets/mist.png";
-    // }
-    // if (data.weather[0].main === "Snow") {
-    //   weatherIcon.src = "assets/snow.png";
-    // }
-
     const weatherCondition = data.weather[0].main;
     console.log(data.weather[0].main); // Log the weather condition for debugging
 
