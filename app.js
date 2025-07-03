@@ -44,7 +44,7 @@ async function getWeather(city) {
     // }
 
     const weatherCondition = data.weather[0].main;
-    // console.log(data);
+    console.log(data.weather[0].main); // Log the weather condition for debugging
 
     switch (weatherCondition) {
       case "Clouds":
