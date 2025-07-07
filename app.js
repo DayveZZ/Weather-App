@@ -3,6 +3,7 @@ const apiUrl = `https://api.openweathermap.org/data/2.5/weather?&appid=${apiKey}
 
 const searchInput = document.querySelector(".search input");
 const searchButton = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon");
 
 async function getWeather(city) {
   try {
@@ -17,18 +18,57 @@ async function getWeather(city) {
 
     const data = await res.json();
 
-    console.log(data);
-
     document.querySelector(".city").innerText = data.name;
     document.querySelector(".temp").innerText =
       Math.round(data.main.temp) + "°C";
     document.querySelector(".humidity").innerText = data.main.humidity + "%";
     document.querySelector(".wind").innerText = data.wind.speed + " km/h";
 
-    if (data.weather[0].main === "Clouds") {
-      document.body.style.backgroundImage = "url('clouds.jpg')";
+    // if (data.weather[0].main === "Clouds") {
+    //   weatherIcon.src = "assets/clouds.png";
+    // }
+    // if (data.weather[0].main === "Rain") {
+    //   weatherIcon.src = "assets/rain.png";
+    // }
+    // if (data.weather[0].main === "Clear") {
+    //   weatherIcon.src = "assets/clear.png";
+    // }
+    // if (data.weather[0].main === "Drizzle") {
+    //   weatherIcon.src = "assets/drizzle.png";
+    // }
+    // if (data.weather[0].main === "Mist") {
+    //   weatherIcon.src = "assets/mist.png";
+    // }
+    // if (data.weather[0].main === "Snow") {
+    //   weatherIcon.src = "assets/snow.png";
+    // }
+
+    const weatherCondition = data.weather[0].main;
+    // console.log(data);
+
+    switch (weatherCondition) {
+      case "Clouds":
+        weatherIcon.src = "assets/clouds.png";
+        break;
+      case "Rain":
+        weatherIcon.src = "assets/rain.png";
+        break;
+      // case "Clear":
+      //   weatherIcon.src = "assets/clear.png";
+      //   break;
+      case "Drizzle":
+        weatherIcon.src = "assets/drizzle.png";
+        break;
+      case "Mist":
+        weatherIcon.src = "assets/mist.png";
+        break;
+      case "Snow":
+        weatherIcon.src = "assets/snow.png";
+        break;
+      default:
+        weatherIcon.src = "assets/clear.png"; // optional fallback
+        break;
     }
-    console.log(data.weather[0].main);
   } catch (error) {
     console.error("Error fetching weather data:", error.message);
     document.querySelector(".city").innerText = "Not Found";
